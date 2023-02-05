@@ -1,29 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+/*
+ * # Improvement ides
+ * - track time
+ * - time limit
+ * - add feedback (red on failed match / green before hidding)
+ * - add shuffle button
+ * - add effect on select
+ * - add Pause / Resume button
+ * - add WIN / GAME OVER
+ */
+using System.Windows.Threading;
 
 namespace MatchGame
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    using System.Windows.Threading;
     public partial class MainWindow : Window
     {
-        DispatcherTimer timer = new DispatcherTimer();
-        int tenthsOfSecondsElapsed;
-        int matchesFound;
+        private readonly DispatcherTimer timer = new DispatcherTimer();
+        private int tenthsOfSecondsElapsed;
+        private int matchesFound;
         public MainWindow()
         {
             InitializeComponent();
@@ -39,7 +41,7 @@ namespace MatchGame
             if (matchesFound == 8)
             {
                 timer.Stop();
-                timeTextBlock.Text = timeTextBlock.Text + " - Play again?";
+                timeTextBlock.Text += " - Play again?";
             }
         }
 
